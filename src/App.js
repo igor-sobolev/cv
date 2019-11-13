@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Document, Page } from "react-pdf/dist/entry.webpack";
 import MaterialIcon from "material-icons-react";
-import CV from "./CV - Igor Sobolev.pdf";
 import "./App.css";
 
 const MIN_WIDTH = 600;
@@ -29,7 +28,7 @@ function App() {
 
   return (
     <div className="App" ref={el => setContainer(el)}>
-      <Document file={CV} onLoadSuccess={onLoadSuccess}>
+      <Document file={`${process.env.PUBLIC_URL}/CV - Igor Sobolev.pdf`} onLoadSuccess={onLoadSuccess}>
         {pages}
       </Document>
       <a
