@@ -24,3 +24,8 @@
 .download-btn:focus {
   background: #0c966d;
 }
+
+.icon {
+  width: 25px;
+  height: 25px;
+}

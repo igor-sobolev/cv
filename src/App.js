@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Document, Page } from "react-pdf/dist/entry.webpack";
-import MaterialIcon from "material-icons-react";
 import "./App.css";
 
 const MIN_WIDTH = 600;
@@ -35,8 +34,9 @@ function App() {
         className="download-btn"
         download
         href={`${process.env.PUBLIC_URL}/CV - Igor Sobolev.pdf`}
+        title="download"
       >
-        <MaterialIcon icon="cloud_download" color="white" />
+        <img src={`${process.env.PUBLIC_URL}/download.svg`} alt="icon" className="icon" />
       </a>
     </div>
   );
