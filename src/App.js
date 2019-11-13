@@ -1,24 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { Document, Page } from "react-pdf/dist/entry.webpack";
+import MaterialIcon from 'material-icons-react';
+import "./App.css";
+
+const MIN_WIDTH = 600;
 
 function App() {
+  const [pages, setPages] = useState();
+  const [container, setContainer] = useState();
+
+  const onLoadSuccess = ({ numPages }) => {
+    const pages = createPages(numPages);
+    setPages(pages);
+  };
+
+  const calculateWidth = () => {
+    return container.offsetWidth || MIN_WIDTH;
+  };
+
+  const createPages = (count) => {
+    let pages = [];
+    for (let i = 1; i <= count; i++) {
+      pages.push(
+        <Page pageNumber={i} width={calculateWidth()} key={i} />
+      )
+    }
+    return pages;
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" ref={el => (setContainer(el))}>
+      <Document
+        file="/CV - Igor Sobolev.pdf"
+        onLoadSuccess={onLoadSuccess}
+      >
+        {pages}
+      </Document>
+      <a className="download-btn" download href="/CV - Igor Sobolev.pdf">
+        <MaterialIcon icon="cloud_download" color="white" />
+      </a>
     </div>
   );
 }
