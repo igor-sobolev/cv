@@ -33,7 +33,7 @@ function App() {
       <a
         className="download-btn"
         download
-        href={`${process.env.PUBLIC_URL}/CV - Igor Sobolev.pdf`}
+        href={`${process.env.PUBLIC_URL}/CV - Igor Sobolev HQ.pdf`}
         title="download"
       >
         <img src={`${process.env.PUBLIC_URL}/download.svg`} alt="icon" className="icon" />
